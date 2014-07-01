@@ -88,7 +88,7 @@ static int save_table(
       TODO: Note inelegant downsize from size_t to int.
             Handle integer overflow here.
     */
-    int array_size = luabins_min(total_size, (int)lua_objlen(L, index));
+    int array_size = luabins_min(total_size, (int)lua_rawlen(L, index));
     int hash_size = luabins_max(0, total_size - array_size);
 
     result = lbs_writeTableHeaderAt(sb, header_pos, array_size, hash_size);

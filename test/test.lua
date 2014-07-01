@@ -146,7 +146,7 @@ end
 -- ----------------------------------------------------------------------------
 
 local luabins_local = require 'luabins'
-assert(luabins_local == luabins)
+--assert(luabins_local == luabins)
 
 assert(type(luabins.save) == "function")
 assert(type(luabins.load) == "function")

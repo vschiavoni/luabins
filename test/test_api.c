@@ -187,7 +187,7 @@ void test_api()
   const unsigned char * str;
   size_t length = 0;
 
-  lua_State * L = lua_open();
+  lua_State * L = lua_newstate();
   luaL_openlibs(L);
 
   printf("---> BEGIN test_api\n");
