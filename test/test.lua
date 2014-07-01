@@ -284,7 +284,8 @@ check_fail_save(
     "can't save: unsupported type detected",
     coroutine.create(function() end)
   )
-check_fail_save("can't save: unsupported type detected", newproxy())
+--commented, newproxy deprecated in Lua 5.2 http://www.luafaq.org/#T8.1.6
+--check_fail_save("can't save: unsupported type detected", newproxy())
 
 print("---> basic table tests")
 
