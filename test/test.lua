@@ -145,8 +145,11 @@ end
 -- Test helper functions
 -- ----------------------------------------------------------------------------
 
-local luabins_local = require 'luabins'
---assert(luabins_local == luabins)
+require 'luabins'
+for k,v in pairs(_G) do
+	print(k,v)
+end
+assert(luabins_local == luabins)
 
 assert(type(luabins.save) == "function")
 assert(type(luabins.load) == "function")
