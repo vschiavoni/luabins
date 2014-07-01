@@ -8,8 +8,8 @@ ifeq ($(shell uname),Darwin)
 else
   # Assuming Ubuntu
   LUA_LIBDIR := /usr/lib
-  LUA_INCDIR := /usr/include/lua5.1
-  LUALIB := lua5.1
+  LUA_INCDIR := /usr/include/lua5.2
+  LUALIB := lua5.2
 endif
 
 PROJECTNAME := luabins
@@ -175,27 +175,27 @@ cleantestobjectsc89:
 	$(RM) $(OBJDIR)/c89-test.o $(OBJDIR)/c89-test_api.o $(OBJDIR)/c89-test_fwrite_api.o $(OBJDIR)/c89-test_savebuffer.o $(OBJDIR)/c89-test_write_api.o $(OBJDIR)/c89-util.o
 
 $(OBJDIR)/c89-test.o: test/test.c test/test.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test.c
 
 $(OBJDIR)/c89-test_api.o: test/test_api.c src/luabins.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_api.c
 
 $(OBJDIR)/c89-test_fwrite_api.o: test/test_fwrite_api.c src/lualess.h \
   src/fwrite.h src/saveload.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_fwrite_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_fwrite_api.c
 
 $(OBJDIR)/c89-test_savebuffer.o: test/test_savebuffer.c src/lualess.h \
   src/savebuffer.h test/test.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_savebuffer.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_savebuffer.c
 
 $(OBJDIR)/c89-test_write_api.o: test/test_write_api.c src/lualess.h \
   src/write.h src/saveload.h src/savebuffer.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_write_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/test_write_api.c
 
 $(OBJDIR)/c89-util.o: test/util.c test/util.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/util.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -Isrc/ -o $@ -c test/util.c
 
 cleanlibsc89: cleanobjectsc89
 	$(RM) $(TMPDIR)/c89/$(SONAME)
@@ -217,32 +217,32 @@ cleanobjectsc89:
 
 $(OBJDIR)/c89-fwrite.o: src/fwrite.c src/luaheaders.h src/fwrite.h \
   src/saveload.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/fwrite.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/fwrite.c
 
 $(OBJDIR)/c89-load.o: src/load.c src/luaheaders.h src/luabins.h \
   src/saveload.h src/luainternals.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/load.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/load.c
 
 $(OBJDIR)/c89-luabins.o: src/luabins.c src/luaheaders.h src/luabins.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/luabins.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/luabins.c
 
 $(OBJDIR)/c89-luainternals.o: src/luainternals.c src/luainternals.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/luainternals.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/luainternals.c
 
 $(OBJDIR)/c89-lualess.o: src/lualess.c
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/lualess.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/lualess.c
 
 $(OBJDIR)/c89-save.o: src/save.c src/luaheaders.h src/luabins.h \
   src/saveload.h src/savebuffer.h src/write.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/save.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/save.c
 
 $(OBJDIR)/c89-savebuffer.o: src/savebuffer.c src/luaheaders.h \
   src/saveload.h src/savebuffer.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/savebuffer.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/savebuffer.c
 
 $(OBJDIR)/c89-write.o: src/write.c src/luaheaders.h src/write.h \
   src/saveload.h src/savebuffer.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/write.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c89 -o $@ -c src/write.c
 
 ## ----- Begin c99 -----
 
@@ -285,27 +285,27 @@ cleantestobjectsc99:
 	$(RM) $(OBJDIR)/c99-test.o $(OBJDIR)/c99-test_api.o $(OBJDIR)/c99-test_fwrite_api.o $(OBJDIR)/c99-test_savebuffer.o $(OBJDIR)/c99-test_write_api.o $(OBJDIR)/c99-util.o
 
 $(OBJDIR)/c99-test.o: test/test.c test/test.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test.c
 
 $(OBJDIR)/c99-test_api.o: test/test_api.c src/luabins.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_api.c
 
 $(OBJDIR)/c99-test_fwrite_api.o: test/test_fwrite_api.c src/lualess.h \
   src/fwrite.h src/saveload.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_fwrite_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_fwrite_api.c
 
 $(OBJDIR)/c99-test_savebuffer.o: test/test_savebuffer.c src/lualess.h \
   src/savebuffer.h test/test.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_savebuffer.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_savebuffer.c
 
 $(OBJDIR)/c99-test_write_api.o: test/test_write_api.c src/lualess.h \
   src/write.h src/saveload.h src/savebuffer.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_write_api.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/test_write_api.c
 
 $(OBJDIR)/c99-util.o: test/util.c test/util.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/util.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -Isrc/ -o $@ -c test/util.c
 
 cleanlibsc99: cleanobjectsc99
 	$(RM) $(TMPDIR)/c99/$(SONAME)
@@ -327,32 +327,32 @@ cleanobjectsc99:
 
 $(OBJDIR)/c99-fwrite.o: src/fwrite.c src/luaheaders.h src/fwrite.h \
   src/saveload.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/fwrite.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/fwrite.c
 
 $(OBJDIR)/c99-load.o: src/load.c src/luaheaders.h src/luabins.h \
   src/saveload.h src/luainternals.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/load.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/load.c
 
 $(OBJDIR)/c99-luabins.o: src/luabins.c src/luaheaders.h src/luabins.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/luabins.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/luabins.c
 
 $(OBJDIR)/c99-luainternals.o: src/luainternals.c src/luainternals.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/luainternals.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/luainternals.c
 
 $(OBJDIR)/c99-lualess.o: src/lualess.c
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/lualess.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/lualess.c
 
 $(OBJDIR)/c99-save.o: src/save.c src/luaheaders.h src/luabins.h \
   src/saveload.h src/savebuffer.h src/write.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/save.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/save.c
 
 $(OBJDIR)/c99-savebuffer.o: src/savebuffer.c src/luaheaders.h \
   src/saveload.h src/savebuffer.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/savebuffer.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/savebuffer.c
 
 $(OBJDIR)/c99-write.o: src/write.c src/luaheaders.h src/write.h \
   src/saveload.h src/savebuffer.h
-	$(CC) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/write.c
+	$(CC) $(CFLAGS) -Wall -Wextra -pedantic -x c -std=c99 -o $@ -c src/write.c
 
 ## ----- Begin c++98 -----
 
@@ -395,27 +395,27 @@ cleantestobjectsc++98:
 	$(RM) $(OBJDIR)/c++98-test.o $(OBJDIR)/c++98-test_api.o $(OBJDIR)/c++98-test_fwrite_api.o $(OBJDIR)/c++98-test_savebuffer.o $(OBJDIR)/c++98-test_write_api.o $(OBJDIR)/c++98-util.o
 
 $(OBJDIR)/c++98-test.o: test/test.c test/test.h
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test.c
 
 $(OBJDIR)/c++98-test_api.o: test/test_api.c src/luabins.h
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_api.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_api.c
 
 $(OBJDIR)/c++98-test_fwrite_api.o: test/test_fwrite_api.c src/lualess.h \
   src/fwrite.h src/saveload.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_fwrite_api.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_fwrite_api.c
 
 $(OBJDIR)/c++98-test_savebuffer.o: test/test_savebuffer.c src/lualess.h \
   src/savebuffer.h test/test.h
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_savebuffer.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_savebuffer.c
 
 $(OBJDIR)/c++98-test_write_api.o: test/test_write_api.c src/lualess.h \
   src/write.h src/saveload.h src/savebuffer.h test/test.h test/util.h \
   test/write_tests.inc
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_write_api.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/test_write_api.c
 
 $(OBJDIR)/c++98-util.o: test/util.c test/util.h
-	$(CXX) $(CFLAGS) -Werror -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/util.c
+	$(CXX) $(CFLAGS) -Wall -Wextra -pedantic -x c++ -std=c++98 -Isrc/ -o $@ -c test/util.c
 
 cleanlibsc++98: cleanobjectsc++98
 	$(RM) $(TMPDIR)/c++98/$(SONAME)
